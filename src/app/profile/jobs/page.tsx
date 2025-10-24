@@ -23,7 +23,7 @@ import { useAuth } from "@/context/AuthContext";
 import ProfileSidebar from "@/components/shared/ProfileSidebar";
 
 
-export const menuItems = [
+const menuItems = [
   { icon: <FiBriefcase size={18} />, label: 'My Applications', key: 'applications' },
   { icon: <FiTarget size={18} />, label: 'Recommended Jobs', key: 'recommendations' },
   { icon: <FiBookmark size={18} />, label: 'Saved Jobs', key: 'saved' },
@@ -31,7 +31,7 @@ export const menuItems = [
   { icon: <FiSearch size={18} />, label: 'Browse Jobs', key: 'browse' },
 ];
 
-export const inputLabels = [
+const inputLabels = [
   'Job Title/ Role',
   'Skills',
   'Experience',
