@@ -1,20 +1,19 @@
-'use client';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState, useRef } from 'react';
-import { FiMenu, FiX } from 'react-icons/fi';
-import { LOGGED_IN_LINKS, SITE_CONFIG } from '../constants/siteconfig';
-import GradientButton from './shared/GradientButton';
-import { useAuth } from '../context/AuthContext';
-import { FiBell, FiMessageSquare } from 'react-icons/fi';
-import ProfileAvatar from './shared/ProfileAvatar';
-import { usePathname, useRouter } from 'next/navigation';
-import NotificationsModal from './shared/NotificationsModal';
-import { profileCompletion } from '../data/profile';
-
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { useState, useRef } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
+import { LOGGED_IN_LINKS, SITE_CONFIG } from "../constants/siteconfig";
+import GradientButton from "./shared/GradientButton";
+import { useAuth } from "../context/AuthContext";
+import { FiBell, FiMessageSquare } from "react-icons/fi";
+import ProfileAvatar from "./shared/ProfileAvatar";
+import { usePathname, useRouter } from "next/navigation";
+import NotificationsModal from "./shared/NotificationsModal";
+import { profileCompletion } from "../data/profile";
 
 const Navbar = () => {
-  const path=usePathname()
+  const path = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const bellButtonRef = useRef<HTMLButtonElement>(null);
@@ -29,40 +28,41 @@ const Navbar = () => {
   return (
     <div className="w-full h-[70px] bg-white shadow-sm fixed top-0 z-50 overflow-x-hidden">
       <div className="w-full max-w-[1360px] mx-auto h-full flex items-center justify-between px-4 md:px-6">
-        <div className='flex flex-row gap-2'>
-      <div className="lg:hidden flex items-center gap-4 z-50">
-          <button
-            onClick={()=>setIsSidebarOpen(!isSidebarOpen)}
-            className="relative bg-white rounded-full shadow-lg hover:bg-gray-50 transition-colors"
-            aria-label="Toggle sidebar"
-            style={{
-              background: `conic-gradient(from 0deg, #5B5DE6 0deg ${(completionPercentage / 100) * 360}deg, #e5e7eb ${(completionPercentage / 100) * 360}deg 360deg)`,
-              padding: '2px',
-              borderRadius: '50%',
-            }}
-          >
-            <div className='rounded-full overflow-hidden h-10 w-10 bg-white flex items-center justify-center'>
-              <Image
-                src={"/homePage/profile.png"}
-                alt={"profile"}
-                width={40}
-                height={40}
-                className="rounded-full object-cover"
-              />
-            </div>
-          </button>
-        </div>
-        {/* Logo Section */}
-        <div className="w-[180px] h-[70px] flex items-center">
-          <Image
-            src="/logo.png"
-            alt="Staff Book"
-            width={140}
-            height={50}
-            priority
-          />
-        </div>
-
+        <div className="flex flex-row gap-2">
+          <div className="lg:hidden flex items-center gap-4 z-50">
+            <button
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              className="relative bg-white rounded-full shadow-lg hover:bg-gray-50 transition-colors"
+              aria-label="Toggle sidebar"
+              style={{
+                background: `conic-gradient(from 0deg, #5B5DE6 0deg ${
+                  (completionPercentage / 100) * 360
+                }deg, #e5e7eb ${(completionPercentage / 100) * 360}deg 360deg)`,
+                padding: "2px",
+                borderRadius: "50%",
+              }}
+            >
+              <div className="rounded-full overflow-hidden h-10 w-10 bg-white flex items-center justify-center">
+                <Image
+                  src={"/homePage/profile.png"}
+                  alt={"profile"}
+                  width={40}
+                  height={40}
+                  className="rounded-full object-cover"
+                />
+              </div>
+            </button>
+          </div>
+          {/* Logo Section */}
+          <div className="w-[180px] h-[70px] flex items-center">
+            <Image
+              src="/logo.png"
+              alt="Staff Book"
+              width={140}
+              height={50}
+              priority
+            />
+          </div>
         </div>
         {/* Desktop Menu */}
         {user ? (
@@ -71,12 +71,19 @@ const Navbar = () => {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`text-[#18192B] text-[16px] font-medium font-sans px-4 py-2 rounded-full ${link.href === path ? 'bg-[#F3EFFF] text-[#18192B]' : 'hover:text-primary transition-colors'}`}
+                className={`text-[#18192B] text-[16px] font-medium font-sans px-4 py-2 rounded-full ${
+                  link.href === path
+                    ? "bg-[#F3EFFF] text-[#18192B]"
+                    : "hover:text-primary transition-colors"
+                }`}
               >
                 {link.label}
               </Link>
             ))}
-            <NavbarIconButton onNotificationsClick={() => setNotificationsOpen(true)} bellButtonRef={bellButtonRef} />
+            <NavbarIconButton
+              onNotificationsClick={() => setNotificationsOpen(true)}
+              bellButtonRef={bellButtonRef}
+            />
             <ProfileAvatar name={user.name} />
           </nav>
         ) : (
@@ -85,16 +92,15 @@ const Navbar = () => {
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[#101022] text-[16px] font-medium font-poppins hover:text-[#5B5DE6] transition-colors"
+                className="text-[#18192B] text-[16px] font-medium font-sans px-4 py-2 rounded-full hover:text-primary transition-colors"
               >
                 {link.label}
               </Link>
             ))}
-            <Link key={"signup"}
-                href={"/signup"}>
-            <GradientButton className="w-[110px] h-[42px] ml-4 text-[16px] font-poppins">
-              {signUpText}
-            </GradientButton>
+            <Link key={"signup"} href={"/signup"}>
+              <GradientButton className="w-[110px] h-[42px] ml-4 text-[16px] font-poppins">
+                {signUpText}
+              </GradientButton>
             </Link>
           </nav>
         )}
@@ -124,59 +130,53 @@ const Navbar = () => {
           ))}
           {user ? (
             <>
-              <NavbarIconButton onNotificationsClick={() => setNotificationsOpen(true)} bellButtonRef={bellButtonRef} />
-             
-            <ProfileAvatar name={user.name} className="mt-4" size={80} />
-              
+              <NavbarIconButton
+                onNotificationsClick={() => setNotificationsOpen(true)}
+                bellButtonRef={bellButtonRef}
+              />
+
+              <ProfileAvatar name={user.name} className="mt-4" size={80} />
             </>
           ) : (
-            <Link key={"signup"}
-                href={"/signup"}>
-            <GradientButton className="w-full h-[42px] text-[16px] font-poppins">
-              {signUpText}
-            </GradientButton>
+            <Link key={"signup"} href={"/signup"}>
+              <GradientButton className="w-full h-[42px] text-[16px] font-poppins">
+                {signUpText}
+              </GradientButton>
             </Link>
           )}
         </div>
       )}
-      
+
       {/* Notifications Modal */}
-      <NotificationsModal 
-        isOpen={notificationsOpen} 
-        onClose={() => setNotificationsOpen(false)} 
+      <NotificationsModal
+        isOpen={notificationsOpen}
+        onClose={() => setNotificationsOpen(false)}
         buttonRef={bellButtonRef}
       />
     </div>
   );
 };
 
-export const NavbarIconButton = ({ onNotificationsClick, bellButtonRef }: { onNotificationsClick: () => void; bellButtonRef?: React.RefObject<HTMLButtonElement | null> }) => {
-
-  return(
-    <div className='flex flex-row gap-4'>
-    <button className=" p-2 rounded-full hover:bg-gray-100 transition-colors">
-              <FiMessageSquare size={22} className='text-gray-500' />
-            </button>
-            <button 
-              ref={bellButtonRef}
-              className="ml-1 p-2 rounded-full hover:bg-gray-100 transition-colors"
-              onClick={onNotificationsClick}
-            >
-              <FiBell size={22} className='text-gray-500' />
-            </button>
+export const NavbarIconButton = ({
+  onNotificationsClick,
+  bellButtonRef,
+}: {
+  onNotificationsClick: () => void;
+  bellButtonRef?: React.RefObject<HTMLButtonElement | null>;
+}) => {
+  return (
+    <div className="flex flex-row gap-4">
+      <button className=" p-2 rounded-full hover:bg-gray-100 transition-colors">
+        <FiMessageSquare size={22} className="text-gray-500" />
+      </button>
+      <button
+        ref={bellButtonRef}
+        className="ml-1 p-2 rounded-full hover:bg-gray-100 transition-colors"
+        onClick={onNotificationsClick}
+      >
+        <FiBell size={22} className="text-gray-500" />
+      </button>
     </div>
-  )
-}
-// export const NavbarSignupButton = () => {
-//   const signUpText = SITE_CONFIG.navbar.signUp;
-//   return(
-//     <GradientButton className="w-full h-[42px] text-[16px] font-poppins" onClick={()=>{
-//       router.push('/signup')
-//     }}>
-//               {signUpText}
-//             </GradientButton>
-//   )
-// }
-
+  );
+};
 export default Navbar;
- 

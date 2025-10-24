@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { FiX } from 'react-icons/fi';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Notification {
   id: string;
@@ -140,7 +141,8 @@ const NotificationsModal: React.FC<NotificationsModalProps> = ({ isOpen, onClose
           {/* Notifications List */}
           <div className="px-4 pb-4 space-y-2">
             {notifications.map((notification) => (
-              <div
+              <Link
+                href="/profile/notifications"
                 key={notification.id}
                 className="flex items-start gap-3 p-3 rounded-lg bg-[#F3EFFF] hover:bg-[#E8E4FF] transition-colors cursor-pointer"
               >
@@ -187,7 +189,7 @@ const NotificationsModal: React.FC<NotificationsModalProps> = ({ isOpen, onClose
                     {notification.timeAgo}
                   </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

@@ -34,7 +34,7 @@ export default function RootLayout({
         <AuthProvider>
         <Navbar />
         {children}
-        <MessageWidget />
+        {/* <MessageWidget /> */}
         <Footer />
         </AuthProvider>
       </body>

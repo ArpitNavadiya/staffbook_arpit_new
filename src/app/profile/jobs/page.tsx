@@ -20,8 +20,25 @@ import {
   FiChevronRight,
 } from "react-icons/fi";
 import { useAuth } from "@/context/AuthContext";
-import JobSearchBar from "@/components/shared/SubMenu";
-import FilterPanel from "@/components/shared/FilterPanel";
+import ProfileSidebar from "@/components/shared/ProfileSidebar";
+
+
+export const menuItems = [
+  { icon: <FiBriefcase size={18} />, label: 'My Applications', key: 'applications' },
+  { icon: <FiTarget size={18} />, label: 'Recommended Jobs', key: 'recommendations' },
+  { icon: <FiBookmark size={18} />, label: 'Saved Jobs', key: 'saved' },
+  { icon: <FiCalendar size={18} />, label: 'Meetings', key: 'meetings' },
+  { icon: <FiSearch size={18} />, label: 'Browse Jobs', key: 'browse' },
+];
+
+export const inputLabels = [
+  'Job Title/ Role',
+  'Skills',
+  'Experience',
+  'Company',
+  'Location',
+  'Date Posted',
+]; 
 
 interface JobApplication {
   id: string;
@@ -514,10 +531,14 @@ export default function JobManagement() {
   };
 
   return (
-    <div className="profile-page min-h-screen bg-gradient-to-br from-[#F8F6FF] to-white p-4 md:p-6 lg:p-8 mt-[50px]">
-      <div className="max-w-7xl mx-auto">
+    <div className="profile-page min-h-screen bg-gradient-to-br from-[#F8F6FF] to-white pt-4 md:pt-6 lg:pt-8 mt-[50px]">
+      <div className="flex gap-6 w-full">
+        <div className="w-[20%] flex-shrink-0">
+          <ProfileSidebar />
+        </div>
+        <div className="w-[80%] flex-1 m-4">
         {/* Enhanced Breadcrumb */}
-        <div className="mb-6 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+        {/* <div className="mb-6 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
           <nav
             className="flex items-center text-sm font-medium"
             aria-label="Breadcrumb"
@@ -562,7 +583,7 @@ export default function JobManagement() {
               </li>
             </ol>
           </nav>
-        </div>
+        </div> */}
 
         {/* Dual view toggle */}
         <div className="flex justify-center mb-6">
@@ -577,7 +598,7 @@ export default function JobManagement() {
                     : "text-[#666] hover:text-[#5B5BE7] hover:bg-[#F8F6FF]"
                 }`}
               >
-                {m === "seeker" ? "Job Seeker" : "Employer"}
+                {m === "seeker" ? "Job Seeking Mode" : "Employer Mode"}
               </button>
             ))}
           </div>
@@ -829,13 +850,73 @@ export default function JobManagement() {
           </div>
         ) : (
           <>
-            <JobSearchBar bgColor="#FCFAFF" className="mb-12" />
+            {/* <JobSearchBar bgColor="#FCFAFF" className="mb-12" /> */}
+            <section
+              className={`w-full  bg-[#F7F7F8] py-6 md:py-2 relative hidden md:block mb-4`}
+            >
+              <div className="w-full max-w-[95%] mx-auto relative px-2 md:px-0">
+                {/* Floating Menu */}
+
+                <div className="absolute top-[-46px] left-1/2 -translate-x-1/2 w-full max-w-[95%] h-[93px] bg-gradient-to-r from-[#5b5be7] to-[#b14be4] rounded-full shadow-lg flex items-center justify-around px-2 md:px-8 z-10 overflow-x-auto gap-2 md:gap-0">
+                  {menuItems.map((item, index) => {
+                    return (
+                      <div
+                        key={item.key}
+                        onClick={() => setActiveTab(item.key as any)}
+                        className={`flex flex-col items-center text-white text-xs md:text-sm min-w-[50px] cursor-pointer ${
+                          activeTab === item.key ? 'bg-[#E8E4FF] text-[#605BE7] p-2 rounded-[10px]' : ''
+                        }`}
+                      >
+                        <span className={`block w-6 h-6 ${
+                          activeTab === item.key ? 'text-[#605BE7]' : ''
+                        }`}>
+                          {item.icon}
+                        </span>
+                        <span className={`mt-1 whitespace-nowrap ${
+                          activeTab === item.key ? 'font-bold text-[#605BE7]' : ''
+                        }`}>
+                          {item.label}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+                {/* Main Input Box */}
+                <div className="mt-[70px] h-[190px]  bg-white rounded-[20px] overflow-hidden border border-gray-200 flex flex-col">
+                  {/* Top Row (Labels) */}
+                  <div className="grid grid-cols-6 bg-[#F0E5FD] h-[50%]">
+                    {inputLabels.map((label, index) => (
+                      <div
+                        key={index}
+                        className="flex items-end justify-center px-2 pb-2  text-xs md:text-lg font-semibold text-[#a259e6]"
+                      >
+                        {label}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Bottom Row (Inputs) */}
+                  <div className="grid grid-cols-6 h-[50%] bg-white">
+                    {inputLabels.map((_, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-center px-3 border-r last:border-r-0"
+                      >
+                        <input
+                          type="text"
+                          placeholder="Enter preferred Role"
+                          className="w-full text-[13px] text-gray-700  px-3 py-2 outline-none focus:ring-2 focus:ring-[#a259e6]"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
             {/* Job Management Hub Box - Homepage Consistent Design */}
-            <div className="mb-8 bg-white rounded-2xl shadow-xl border border-gray-100 p-8 relative overflow-hidden">
-              {/* Background Gradient Accent */}
+            {/* <div className="mb-8 bg-white rounded-2xl shadow-xl border border-gray-100 p-8 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#5B5BE7] to-[#921294] opacity-10 rounded-bl-full"></div>
 
-              {/* Header Content */}
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-4 rounded-2xl bg-gradient-to-br from-[#5B5BE7] to-[#921294] text-white shadow-lg">
@@ -852,7 +933,6 @@ export default function JobManagement() {
                   </div>
                 </div>
 
-                {/* Quick Stats Row */}
                 <div className="flex flex-wrap gap-4 mt-6">
                   <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#5B5BE7]/10 to-[#921294]/10 rounded-full">
                     <FiTarget className="text-[#5B5BE7]" size={16} />
@@ -874,91 +954,68 @@ export default function JobManagement() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#E8E4FF] hover:shadow-lg transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-[#5B5BE7] to-[#B14BE4] text-white">
-                    <FiBriefcase size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#222]">12</h3>
-                    <p className="text-sm text-[#666]">Applications</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#E8E4FF] hover:shadow-lg transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-[#B14BE4] to-[#921294] text-white">
-                    <FiEye size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#222]">3</h3>
-                    <p className="text-sm text-[#666]">Interviews</p>
+            <div>
+              <h2 className="text-2xl font-bold text-[#222] font-Montserrat mb-8">
+                Dashboard
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#E8E4FF] hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-[#5B5BE7] to-[#B14BE4] text-white">
+                      <FiBriefcase size={20} />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-[#222]">12</h3>
+                      <p className="text-sm text-[#666]">Applications</p>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#E8E4FF] hover:shadow-lg transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-[#8B2AE2] to-[#5B5BE7] text-white">
-                    <FiBookmark size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#222]">8</h3>
-                    <p className="text-sm text-[#666]">Saved Jobs</p>
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#E8E4FF] hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-[#B14BE4] to-[#921294] text-white">
+                      <FiEye size={20} />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-[#222]">3</h3>
+                      <p className="text-sm text-[#666]">Interviews</p>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#E8E4FF] hover:shadow-lg transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-[#921294] to-[#B14BE4] text-white">
-                    <FiTrendingUp size={20} />
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#E8E4FF] hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-[#8B2AE2] to-[#5B5BE7] text-white">
+                      <FiBookmark size={20} />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-[#222]">8</h3>
+                      <p className="text-sm text-[#666]">Saved Jobs</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#222]">92%</h3>
-                    <p className="text-sm text-[#666]">Match Score</p>
+                </div>
+
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#E8E4FF] hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-[#921294] to-[#B14BE4] text-white">
+                      <FiTrendingUp size={20} />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-[#222]">92%</h3>
+                      <p className="text-sm text-[#666]">Match Score</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Tab Navigation */}
-
-            <div className="bg-white rounded-2xl p-2 md:p-0 mx-0 px-0 shadow-sm border border-[#E8E4FF] mb-8 w-full overflow-hidden">
-              {/* Desktop: evenly-spaced 5 tabs across full width */}
+            {/* <div className="bg-white rounded-2xl p-2 md:p-0 mx-0 px-0 shadow-sm border border-[#E8E4FF] mb-8 w-full overflow-hidden">
               <div className="hidden md:grid md:grid-cols-5 md:gap-2">
-                {[
-                  {
-                    key: "applications",
-                    label: "My Applications",
-                    icon: <FiBriefcase size={18} />,
-                  },
-                  {
-                    key: "recommendations",
-                    label: "Recommended Jobs",
-                    icon: <FiTarget size={18} />,
-                  },
-                  {
-                    key: "saved",
-                    label: "Saved Jobs",
-                    icon: <FiBookmark size={18} />,
-                  },
-                  {
-                    key: "meetings",
-                    label: "Meetings",
-                    icon: <FiCalendar size={18} />,
-                  },
-                  {
-                    key: "browse",
-                    label: "Browse Jobs",
-                    icon: <FiSearch size={18} />,
-                  },
-                ].map((tab) => (
+                {menuItems.map((tab) => (
                   <button
                     key={tab.key}
                     onClick={() => setActiveTab(tab.key as any)}
@@ -974,7 +1031,6 @@ export default function JobManagement() {
                 ))}
               </div>
 
-              {/* Mobile: horizontal scrollable row */}
               <div className="md:hidden overflow-x-auto">
                 <div className="flex gap-2 min-w-max px-2 py-2">
                   {[
@@ -1019,7 +1075,7 @@ export default function JobManagement() {
                   ))}
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Content based on active tab */}
             {activeTab === "applications" && (
@@ -1467,6 +1523,7 @@ export default function JobManagement() {
             )}
           </>
         )}
+        </div>
       </div>
     </div>
   );

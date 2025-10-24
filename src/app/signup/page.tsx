@@ -15,7 +15,7 @@ export default function Page() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     signup("test","test@abc.com","1111")
-    router.push('/home')
+    router.push('/networking')
     // handle signup logic here
   };
 

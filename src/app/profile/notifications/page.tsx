@@ -203,7 +203,7 @@ export default function Notifications() {
     <div className="min-h-screen bg-gradient-to-br from-[#F8F6FF] to-white p-4 md:p-6 lg:p-8 mt-[50px]">
       <div className="max-w-4xl mx-auto">
         {/* Enhanced Breadcrumb */}
-        <div className="mb-6 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+        {/* <div className="mb-6 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
           <nav
             className="flex items-center text-sm font-medium"
             aria-label="Breadcrumb"
@@ -248,7 +248,7 @@ export default function Notifications() {
               </li>
             </ol>
           </nav>
-        </div>
+        </div> */}
         {/* Header */}
         <div className="mb-8 mt-12">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">

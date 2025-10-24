@@ -24,22 +24,22 @@ const enhancedCards: EnhancedCardItem[] = [
     route: '/profile/analytics',
     color: 'from-[#5B5BE7] to-[#B14BE4]'
   },
-  {
-    id: 'jobs',
-    icon: <FiBriefcase size={20} />,
-    title: 'Job Applications',
-    subtitle: 'Applied & Saved',
-    route: '/profile/jobs',
-    color: 'from-[#B14BE4] to-[#921294]'
-  },
-  {
-    id: 'network',
-    icon: <FiUsers size={20} />,
-    title: 'My Network',
-    subtitle: 'Connections',
-    route: '/profile/network',
-    color: 'from-[#5B5BE7] to-[#8B2AE2]'
-  },
+  // {
+  //   id: 'jobs',
+  //   icon: <FiBriefcase size={20} />,
+  //   title: 'Job Applications',
+  //   subtitle: 'Applied & Saved',
+  //   route: '/profile/jobs',
+  //   color: 'from-[#B14BE4] to-[#921294]'
+  // },
+  // {
+  //   id: 'network',
+  //   icon: <FiUsers size={20} />,
+  //   title: 'My Network',
+  //   subtitle: 'Connections',
+  //   route: '/profile/network',
+  //   color: 'from-[#5B5BE7] to-[#8B2AE2]'
+  // },
   {
     id: 'messages',
     icon: <FiMessageCircle size={20} />,
@@ -73,15 +73,15 @@ const enhancedCards: EnhancedCardItem[] = [
     route: '/profile/insights',
     color: 'from-[#5B5BE7] to-[#B14BE4]'
   },
-  {
-    id: 'notifications',
-    icon: <FiBell size={20} />,
-    title: 'Notifications',
-    subtitle: 'Updates & Alerts',
-    route: '/profile/notifications',
-    color: 'from-[#921294] to-[#8B2AE2]',
-    isNew: true
-  }
+  // {
+  //   id: 'notifications',
+  //   icon: <FiBell size={20} />,
+  //   title: 'Notifications',
+  //   subtitle: 'Updates & Alerts',
+  //   route: '/profile/notifications',
+  //   color: 'from-[#921294] to-[#8B2AE2]',
+  //   isNew: true
+  // }
 ];
 
 export default function ProfileSidebar() {

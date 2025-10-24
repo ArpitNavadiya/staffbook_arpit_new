@@ -192,10 +192,10 @@ export const SITE_CONFIG = {
   },
   navbar: {
     navLinks: [
-      { label: 'Jobs', href: '/jobs' },
-      { label: 'Networking', href: '/networking' },
-      { label: 'My Connections', href: '/myconnection' },
-      { label: 'Services', href: '/services' },
+      { label: 'Jobs', href: '/job-market' },
+      { label: 'Networking', href: '/networks' },
+      { label: 'My Connections', href: '/connections' },
+      { label: 'Services', href: '/service' },
     ],
     signUp: 'Sign up',
   },
@@ -335,9 +335,10 @@ export const SITE_CONFIG = {
   },
 };
 export const LOGGED_IN_LINKS = [
-  { label: 'Home', href: '/home' },
-  { label: 'Jobs', href: '/jobs' },
+  // { label: 'Home', href: '/home' },
   { label: 'Networking', href: '/networking' },
+  // { label: 'Jobs', href: '/jobs' },
+  { label: 'Jobs', href: '/profile/jobs' },
   { label: 'My Connections', href: '/connections' },
   { label: 'Services', href: '/services' },
 ];
