@@ -37,6 +37,64 @@ const NetworkingRightSidebar: React.FC = () => {
   const [activeTab, setActiveTab] = useState("Near You");
   return (
     <>
+      <div className="w-full lg:w-80 xl:w-96 bg-white rounded-lg border border-gray-200 p-4 lg:p-6 mb-[15px]">
+        <div className="p-2 lg:p-2">
+          {/* Map Section */}
+          <div className="w-full h-48 mb-4 rounded-lg overflow-hidden">
+            <Image
+              src="/homePage/location.png"
+              alt="Map showing job locations"
+              width={400}
+              height={200}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Tabs */}
+          <div className="flex gap-2 mb-4">
+            <button className="px-4 py-2 bg-purple-600 text-white rounded-full text-sm font-medium">
+              All
+            </button>
+            <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">
+              Near You
+            </button>
+            <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">
+              Your City
+            </button>
+          </div>
+
+          {/* Recruiter Cards */}
+          <div className="space-y-3">
+            {suggestedConnections.map((recruiter, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-3 p-2 bg-[#F5E8FF] rounded-2xl"
+              >
+                {/* Profile Picture with Purple Border */}
+                <div className="relative">
+                  <div className="w-15 h-15 rounded-full bg-gradient-to-r from-purple-500 to-purple-700 p-1">
+                    <Image
+                      src={recruiter.avatar}
+                      alt={recruiter.name}
+                      width={56}
+                      height={56}
+                      className="w-full h-full rounded-full object-cover bg-white"
+                    />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold text-gray-900 text-base">
+                    {recruiter.name}
+                  </h3>
+                  <p className="text-sm text-gray-600">{recruiter.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
       <div className="w-full lg:w-80 xl:w-96 bg-white rounded-lg border border-gray-200 p-4 lg:p-6">
         <h3 className="font-semibold text-gray-900 mb-4">
           {SITE_CONFIG.networking.suggestedForYou}
@@ -72,75 +130,6 @@ const NetworkingRightSidebar: React.FC = () => {
       <div className="w-full mt-4 lg:w-80 xl:w-96 bg-white rounded-lg border border-gray-200 p-4 lg:p-6">
         <RecruitersOnline />
       </div>
-      <div className="w-full mt-4 lg:w-80 xl:w-96 bg-white rounded-lg border border-gray-200 p-4 lg:p-6 mx-[5px]">
-        <div className="p-2 lg:p-2">
-          {/* Map Section */}
-          <div className="w-full h-48 mb-4 rounded-lg overflow-hidden">
-            <Image
-              src="/homePage/location.png"
-              alt="Map showing job locations"
-              width={400}
-              height={200}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          
-          {/* Tabs */}
-          <div className="flex gap-2 mb-4">
-            <button className="px-4 py-2 bg-purple-600 text-white rounded-full text-sm font-medium">
-              All
-            </button>
-            <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">
-              Near You
-            </button>
-            <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">
-              Your City
-            </button>
-          </div>
-          
-          {/* Recruiter Cards */}
-          <div className="space-y-3">
-            {suggestedConnections.map((recruiter, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-3 p-2 bg-[#F5E8FF] rounded-2xl"
-              >
-                {/* Profile Picture with Purple Border */}
-                <div className="relative">
-                  <div className="w-15 h-15 rounded-full bg-gradient-to-r from-purple-500 to-purple-700 p-1">
-                    <Image
-                      src={recruiter.avatar}
-                      alt={recruiter.name}
-                      width={56}
-                      height={56}
-                      className="w-full h-full rounded-full object-cover bg-white"
-                    />
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-gray-900 text-base">
-                    {recruiter.name}
-                  </h3>
-                  <p className="text-sm text-gray-600">{recruiter.title}</p>
-                </div>
-
-                {/* Google Logo - Fixed positioning */}
-                {/* <div className="flex-shrink-0 ml-auto">
-                  <Image
-                    src="/homePage/google-logo.png"
-                    alt="Google"
-                    width={32}
-                    height={32}
-                    className="w-8 h-8 object-contain"
-                  />
-                </div> */}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </>
   );
 };
@@ -174,9 +163,9 @@ const RecruiterCard: React.FC<{ recruiter: Recruiter }> = ({ recruiter }) => {
             {SITE_CONFIG.networking.recruitersOnline.chat}
           </button>
         </div>
-        <p className="text-xs text-gray-600 leading-relaxed">
+        {/* <p className="text-xs text-gray-600 leading-relaxed">
           {recruiter.description}
-        </p>
+        </p> */}
       </div>
     </div>
   );
