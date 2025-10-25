@@ -23,7 +23,7 @@ const NetworkingRightSidebar: React.FC = () => {
             <div className="flex-1 min-w-0">
               <h3 className="font-semibold text-gray-900 text-sm">{connection.name}</h3>
               <p className="text-xs text-gray-600 mb-1">{connection.title}</p>
-              <p className="text-xs text-gray-500 line-clamp-2 mb-2">{connection.description}</p>
+              {/* <p className="text-xs text-gray-500 line-clamp-2 mb-2">{connection.description}</p> */}
               <button className="bg-gradient-to-r from-[#5B5DE6] to-[#921294] text-white px-3 py-1 rounded-full text-xs font-medium hover:bg-purple-700 transition-colors">
                 {SITE_CONFIG.networking.connect}
               </button>

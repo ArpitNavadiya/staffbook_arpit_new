@@ -366,47 +366,47 @@ const Networking: React.FC = () => {
         
 
           {/* Create Post Section */}
-          {/* <div className="bg-white md:rounded-lg border border-gray-200 p-4 mb-6">
-            <div className="flex items-start gap-3">
-             
+          <div className="bg-white md:rounded-lg border border-gray-200 p-6 mb-6">
+            <div className="flex items-center gap-4 mb-4">
               <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-400 p-0.5">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-pink-400 p-1">
                   <Image
                     src="/homePage/profile.png"
                     alt="Your profile"
-                    width={40}
-                    height={40}
-                    className="w-full h-full rounded-full object-cover"
+                    width={64}
+                    height={64}
+                    className="w-full h-full rounded-full object-cover bg-white"
                   />
                 </div>
               </div>
               <div className="flex-1">
                 <input
                   type="text"
-                  placeholder={SITE_CONFIG.networking.writePost}
-                  className="w-full p-3 border border-purple-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full p-4 bg-gray-50 rounded-full border border-gray-300 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white"
+                  placeholder="Write a post"
                 />
-                <div className="flex items-center gap-4 mt-3">
-                  <button className="flex items-center gap-2 text-purple-600 hover:text-purple-700 transition-colors text-sm">
-                    <FiEdit3 className="w-4 h-4" />
-                    {SITE_CONFIG.networking.postTypes.blog}
-                  </button>
-                  <button className="flex items-center gap-2 text-purple-600 hover:text-purple-700 transition-colors text-sm">
-                    <FiImage className="w-4 h-4" />
-                    {SITE_CONFIG.networking.postTypes.image}
-                  </button>
-                  <button className="flex items-center gap-2 text-purple-600 hover:text-purple-700 transition-colors text-sm">
-                    <FiVideoIcon className="w-4 h-4" />
-                    {SITE_CONFIG.networking.postTypes.video}
-                  </button>
-                  <button className="flex items-center gap-2 text-purple-600 hover:text-purple-700 transition-colors text-sm">
-                    <FiVideo className="w-4 h-4" />
-                    {SITE_CONFIG.networking.postTypes.reel}
-                  </button>
-                </div>
               </div>
             </div>
-          </div> */}
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <button className="flex items-center justify-center gap-2 p-3 hover:bg-purple-50 hover:border-purple-200 transition-colors">
+                <FiEdit3 className="w-5 h-5 text-purple-600" />
+                <span className="text-sm font-bold text-black">Write Blog</span>
+              </button>
+              <button className="flex items-center justify-center gap-2 p-3 hover:bg-purple-50 hover:border-purple-200 transition-colors">
+                <FiImage className="w-5 h-5 text-purple-600" />
+                <span className="text-sm font-bold text-black">Upload Image</span>
+              </button>
+              <button className="flex items-center justify-center gap-2 p-3 hover:bg-purple-50 hover:border-purple-200 transition-colors">
+                <FiVideoIcon className="w-5 h-5 text-purple-600" />
+                <span className="text-sm font-bold text-black">Upload Video</span>
+              </button>
+              <button className="flex items-center justify-center gap-2 p-3 hover:bg-purple-50 hover:border-purple-200 transition-colors">
+                <FiVideo className="w-5 h-5 text-purple-600" />
+                <span className="text-sm font-bold text-black">Upload Reel</span>
+              </button>
+            </div>
+          </div>
 
       
           {/* Posts Feed */}
@@ -446,4 +446,4 @@ const Networking: React.FC = () => {
   );
 };
 
-export default Networking; 
+export default Networking;

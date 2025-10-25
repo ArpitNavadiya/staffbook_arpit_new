@@ -40,15 +40,15 @@ const enhancedCards: EnhancedCardItem[] = [
   //   route: '/profile/network',
   //   color: 'from-[#5B5BE7] to-[#8B2AE2]'
   // },
-  {
-    id: 'messages',
-    icon: <FiMessageCircle size={20} />,
-    title: 'Messages',
-    subtitle: 'Recruiters & Network',
-    route: '/profile/messages',
-    color: 'from-[#921294] to-[#B14BE4]',
-    isNew: true
-  },
+  // {
+  //   id: 'messages',
+  //   icon: <FiMessageCircle size={20} />,
+  //   title: 'Messages',
+  //   subtitle: 'Recruiters & Network',
+  //   route: '/profile/messages',
+  //   color: 'from-[#921294] to-[#B14BE4]',
+  //   isNew: true
+  // },
   {
     id: 'development',
     icon: <FiAward size={20} />,
@@ -87,10 +87,8 @@ const enhancedCards: EnhancedCardItem[] = [
 export default function ProfileSidebar() {
   return (
     <aside className="w-full md:w-[20rem] lg:w-[19rem] md:h-screen flex flex-col items-center pt-[1.5rem] z-10 shadow-lg md:shadow-none mt-[3rem]">
-      {/* Profile Section - Fixed at top */}
-      <div className="flex flex-col items-center mb-[1.5rem] flex-shrink-0 px-4 md:px-0">
+      {/* <div className="flex flex-col items-center mb-[1.5rem] flex-shrink-0 px-4 md:px-0">
         <div className="relative flex flex-col items-center">
-          {/* Enhanced Gradient Border Circle */}
           <div className="w-[6rem] h-[6rem] rounded-full bg-gradient-to-tr from-[#5B5BE7] via-[#B14BE4] to-[#921294] p-[0.1875rem] flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div className="w-[5.5rem] h-[5.5rem] rounded-full bg-white flex items-center justify-center overflow-hidden">
               <Image
@@ -102,11 +100,9 @@ export default function ProfileSidebar() {
               />
             </div>
           </div>
-          {/* Enhanced Edit Icon */}
           <div className="absolute top-0 right-0 w-[2rem] h-[2rem] rounded-full bg-white flex items-center justify-center shadow-md hover:shadow-lg -translate-y-[0.5rem] translate-x-[0.5rem] cursor-pointer hover:scale-110 transition-all duration-300">
             <FiEdit2 className="text-[#B14BE4] hover:text-[#921294] transition-colors duration-300" size={16} />
           </div>
-          {/* Enhanced Percentage Badge */}
           <div className="absolute left-1/2 -translate-x-1/2 bottom-[-1.125rem] bg-gradient-to-r from-[#5B5BE7] to-[#B14BE4] px-3 py-1 rounded-full shadow-md text-sm font-bold text-white flex items-center">
             80%
           </div>
@@ -121,7 +117,7 @@ export default function ProfileSidebar() {
         <Link href="/profile" className="mt-[0.75rem] w-[7.4375rem] h-[1.8125rem] bg-gradient-to-r from-[#5B5DE6] to-[#921294] hover:from-[#4A4AD6] hover:to-[#811284] text-white text-[0.875rem] font-bold rounded-full shadow-md hover:shadow-lg flex items-center justify-center transition-all duration-300 transform hover:scale-105">
           View Profile
         </Link>
-      </div>
+      </div> */}
 
       {/* Enhanced Cards Section - Scrollable */}
       <div className="flex-1 w-full px-4 pb-16 md:pb-4">

@@ -248,7 +248,7 @@ export const SITE_CONFIG = {
       publish: 'Publish',
       cancel: 'Cancel',
     },
-    suggestedForYou: 'Suggested for you',
+    suggestedForYou: 'Suggested for networking',
     connect: 'Connect',
     viewProfile: 'View Profile',
     postActions: {

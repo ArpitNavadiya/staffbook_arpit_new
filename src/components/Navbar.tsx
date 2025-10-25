@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX, FiSearch } from "react-icons/fi";
 import { LOGGED_IN_LINKS, SITE_CONFIG } from "../constants/siteconfig";
 import GradientButton from "./shared/GradientButton";
 import { useAuth } from "../context/AuthContext";
@@ -64,6 +64,20 @@ const Navbar = () => {
             />
           </div>
         </div>
+        
+        {/* Search Bar */}
+        <div className="hidden lg:flex flex-1 max-w-md mx-8">
+          <div className="relative w-full">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <FiSearch className="h-5 w-5 text-gray-400" />
+            </div>
+            <input
+              type="text"
+              placeholder="People, Post & Jobs"
+              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-[10px] leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-[#5B5DE6] focus:border-[#5B5DE6] text-sm"
+            />
+          </div>
+        </div>
         {/* Desktop Menu */}
         {user ? (
           <nav className="hidden lg:flex items-center gap-8">
@@ -118,6 +132,18 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="fixed top-15 lg:hidden left-0 w-full min-h-screen bg-white px-6 py-4 shadow-md space-y-4 z-50 flex flex-col">
+          {/* Mobile Search Bar */}
+          <div className="relative w-full mb-4">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <FiSearch className="h-5 w-5 text-gray-400" />
+            </div>
+            <input
+              type="text"
+              placeholder="People, Post & Jobs"
+              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-full leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-[#5B5DE6] focus:border-[#5B5DE6] text-sm"
+            />
+          </div>
+          
           {(user ? LOGGED_IN_LINKS : navLinks).map((link) => (
             <Link
               key={link.label}
