@@ -75,7 +75,7 @@ const NetworkingRightSidebar: React.FC = () => {
       <div className="w-full mt-4 lg:w-80 xl:w-96 bg-white rounded-lg border border-gray-200 p-4 lg:p-6 mx-[5px]">
         <div className="p-2 lg:p-2">
           {/* Map Section */}
-          <div className="w-full h-48 mb-4 rounded-[5px] overflow-hidden">
+          <div className="w-full h-48 mb-4 rounded-lg overflow-hidden">
             <Image
               src="/homePage/location.png"
               alt="Map showing job locations"
@@ -85,54 +85,57 @@ const NetworkingRightSidebar: React.FC = () => {
             />
           </div>
           
-          {/* Header */}
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold text-gray-900">
-              Explore Jobs in Your Area
-            </h3>
-            <button className="text-purple-600 hover:text-purple-700 text-sm font-medium transition-colors">
-              View all
+          {/* Tabs */}
+          <div className="flex gap-2 mb-4">
+            <button className="px-4 py-2 bg-purple-600 text-white rounded-full text-sm font-medium">
+              All
+            </button>
+            <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">
+              Near You
+            </button>
+            <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">
+              Your City
             </button>
           </div>
           
-          {/* Job Listings */}
+          {/* Recruiter Cards */}
           <div className="space-y-3">
-            {jobList.map((job, i) => (
+            {suggestedConnections.map((recruiter, i) => (
               <div
                 key={i}
-                className="flex items-start gap-3 p-3 hover:bg-gray-50 rounded-lg transition-colors"
+                className="flex items-center gap-3 p-2 bg-[#F5E8FF] rounded-2xl"
               >
-                {/* Company Logo with Border */}
+                {/* Profile Picture with Purple Border */}
                 <div className="relative">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-400 p-0.5">
+                  <div className="w-15 h-15 rounded-full bg-gradient-to-r from-purple-500 to-purple-700 p-1">
                     <Image
-                      src={job.logo}
-                      alt={job.title}
-                      width={48}
-                      height={48}
-                      className="w-full h-full rounded-full object-cover"
+                      src={recruiter.avatar}
+                      alt={recruiter.name}
+                      width={56}
+                      height={56}
+                      className="w-full h-full rounded-full object-cover bg-white"
                     />
                   </div>
-                  {/* Active Status Dot */}
-                  <div className="absolute -bottom-1 -left-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
                 </div>
 
+                {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between mb-2">
-                    <div>
-                      <h3 className="font-semibold text-gray-900 text-sm">
-                        {job.title}
-                      </h3>
-                      <p className="text-xs text-gray-600">{job.company}</p>
-                    </div>
-                    <button className="px-3 py-1 border border-purple-500 text-purple-600 rounded-full text-xs font-medium hover:bg-purple-50 transition-colors">
-                      Apply
-                    </button>
-                  </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    Join our team and work on exciting projects with cutting-edge technology. Great benefits and growth opportunities.
-                  </p>
+                  <h3 className="font-semibold text-gray-900 text-base">
+                    {recruiter.name}
+                  </h3>
+                  <p className="text-sm text-gray-600">{recruiter.title}</p>
                 </div>
+
+                {/* Google Logo - Fixed positioning */}
+                {/* <div className="flex-shrink-0 ml-auto">
+                  <Image
+                    src="/homePage/google-logo.png"
+                    alt="Google"
+                    width={32}
+                    height={32}
+                    className="w-8 h-8 object-contain"
+                  />
+                </div> */}
               </div>
             ))}
           </div>
