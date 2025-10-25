@@ -1,5 +1,6 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const profiles = [
   { 
@@ -83,6 +84,25 @@ const StorySection = () => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [showStoryModal, setShowStoryModal] = useState(false);
   const [progress, setProgress] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -200,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 200,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const handleStoryClick = (profileName: string) => {
     if (profileName === "Your Story") {
@@ -151,7 +171,26 @@ const StorySection = () => {
         <div className="absolute inset-0  z-5 block sm:hidden" />
 
         <div className="relative w-full max-w-full z-10">
+          {/* Left Arrow */}
+          <button
+            onClick={scrollLeft}
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
+            aria-label="Scroll left"
+          >
+            <FiChevronLeft className="w-5 h-5 text-gray-600 cursor-pointer" />
+          </button>
+
+          {/* Right Arrow */}
+          <button
+            onClick={scrollRight}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 z-20 w-10 h-10 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
+            aria-label="Scroll right"
+          >
+            <FiChevronRight className="w-5 h-5 text-gray-600 cursor-pointer" />
+          </button>
+
           <div
+            ref={scrollContainerRef}
             className="w-full h-[6.25rem] sm:h-[9.375rem] md:h-[12.5rem] mt-[2rem] sm:mt-[3rem] md:mt-[3.5rem] flex items-center overflow-x-auto px-[0.5rem] space-x-[1rem] sm:space-x-[1.5rem] scrollbar-thin scrollbar-thumb-[var(--color-primary)] "
             style={{
               WebkitOverflowScrolling: "touch",

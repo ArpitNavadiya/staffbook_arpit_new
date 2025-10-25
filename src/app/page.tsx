@@ -9,11 +9,8 @@ import ResumeSection from "../components/Homepage/resume";
 import CompanyLogoSection from "../components/Homepage/company-logo";
 import CombinedChatJobSection from "../components/Homepage/liveAndchatSection";
 import PremiumSection from "../components/Homepage/PremiumSection";
-import MessageWidget from "@/components/shared/MessageWidget";
-import { useAuth } from "../context/AuthContext";
 
 export default function Home() {
-    const { user } = useAuth();
   return (
     <>
     {/* <Navbar/> */}
@@ -25,7 +22,6 @@ export default function Home() {
     <CombinedChatJobSection/>
     {/* <JobPostSection /> */}
     <PremiumSection/>
-    {user && <MessageWidget />}
     {/* <Footer/> */}
     </>
   );
