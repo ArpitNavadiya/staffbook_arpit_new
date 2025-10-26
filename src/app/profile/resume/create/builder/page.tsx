@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import ProfileLayout from '../../../../..//components/shared/ProfileLayout';
@@ -78,7 +78,8 @@ const sections = [
   { id: 'certifications', name: 'Certifications', icon: FiAward, required: false }
 ];
 
-export default function ResumeBuilder() {
+// Component that uses useSearchParams
+function ResumeBuilderContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const source = searchParams.get('source');
@@ -989,5 +990,21 @@ export default function ResumeBuilder() {
         </div>
       </div>
     </ProfileLayout>
+  );
+}
+
+// Main component with Suspense boundary
+export default function ResumeBuilder() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F9FF] to-[#E8E9FF] flex items-center justify-center">
+        <div className="text-center">
+          <FiLoader size={48} className="mx-auto mb-4 text-[#5B5BE7] animate-spin" />
+          <p className="text-[#666] text-lg">Loading Resume Builder...</p>
+        </div>
+      </div>
+    }>
+      <ResumeBuilderContent />
+    </Suspense>
   );
 }
