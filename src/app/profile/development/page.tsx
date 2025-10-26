@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import ProfileLayout from '../../../components/shared/ProfileLayout';
 import {
   FiTrendingUp,
   FiBook,
@@ -297,10 +298,11 @@ export default function Development() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F8F6FF] to-white p-4 md:p-6 lg:p-8 mt-[50px]">
-      <div className="max-w-7xl mx-auto">
+    <ProfileLayout showSidebar={true} showStories={false} showJobSearchBar={false}>
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F6FF] to-[#F3EFFF] p-4 md:p-6 -mt-[10px]">
+        <div className="max-w-7xl mx-auto">
         {/* Enhanced Breadcrumb */}
-        <div className="mb-6 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+        {/* <div className="mb-6 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
           <nav
             className="flex items-center text-sm font-medium"
             aria-label="Breadcrumb"
@@ -345,11 +347,11 @@ export default function Development() {
               </li>
             </ol>
           </nav>
-        </div>
+        </div> */}
 
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold font-Montserrat text-[#5B5BE7] mb-2">
+          <h1 className="text-3xl md:text-2xl font-bold font-Montserrat text-[#5B5BE7]">
             Career Growth & Learning
           </h1>
           <p className="text-lg text-[#666] font-Montserrat">
@@ -1224,5 +1226,6 @@ export default function Development() {
         )}
       </div>
     </div>
+    </ProfileLayout>
   );
 }

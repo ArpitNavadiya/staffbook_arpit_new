@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import ProfileLayout from '../../../components/shared/ProfileLayout';
 import {
   FiTrendingUp,
   FiUsers,
@@ -193,10 +194,11 @@ export default function RecruiterInsights() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F8F6FF] to-white p-4 md:p-6 lg:p-8 mt-[50px]">
-      <div className="max-w-7xl mx-auto">
+    <ProfileLayout showSidebar={true} showStories={false} showJobSearchBar={false}>
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F6FF] to-[#F3EFFF] p-4 md:p-6 -mt-[10px]">
+        <div className="max-w-7xl mx-auto">
         {/* Enhanced Breadcrumb */}
-        <div className="mb-6 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+        {/* <div className="mb-6 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
           <nav
             className="flex items-center text-sm font-medium"
             aria-label="Breadcrumb"
@@ -241,11 +243,11 @@ export default function RecruiterInsights() {
               </li>
             </ol>
           </nav>
-        </div>
+        </div> */}
 
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold font-Montserrat text-[#5B5BE7] mb-2">
+          <h1 className="text-3xl md:text-2xl font-bold font-Montserrat text-[#5B5BE7]">
             Recruiter Insights
           </h1>
           <p className="text-lg text-[#666] font-Montserrat">
@@ -399,7 +401,7 @@ export default function RecruiterInsights() {
                       <button className="px-4 py-2 bg-gradient-to-r from-[#5B5BE7] to-[#B14BE4] hover:from-[#4A4AD6] hover:to-[#A13BD3] text-white font-bold rounded-lg transition-all duration-300">
                         Take Action
                       </button>
-                      <button className="px-4 py-2 border border-[#E8E4FF] rounded-lg hover:border-[#B14BE4] transition-colors duration-300">
+                      <button className="px-4 py-2 text-[#5B5BE7] border border-[#5B5BE7] rounded-lg hover:border-[#B14BE4] transition-colors duration-300">
                         Learn More
                       </button>
                     </div>
@@ -582,7 +584,7 @@ export default function RecruiterInsights() {
                       <button className="px-4 py-2 bg-gradient-to-r from-[#5B5BE7] to-[#B14BE4] hover:from-[#4A4AD6] hover:to-[#A13BD3] text-white font-bold rounded-lg transition-all duration-300">
                         View Jobs
                       </button>
-                      <button className="px-4 py-2 border border-[#E8E4FF] rounded-lg hover:border-[#B14BE4] transition-colors duration-300">
+                      <button className="px-4 py-2 text-[#5B5BE7] border border-[#5B5BE7] rounded-lg hover:border-[#B14BE4] transition-colors duration-300">
                         Company Info
                       </button>
                     </div>
@@ -594,5 +596,6 @@ export default function RecruiterInsights() {
         )}
       </div>
     </div>
+    </ProfileLayout>
   );
 }

@@ -533,7 +533,7 @@ export default function JobManagement() {
   return (
     <div className="profile-page min-h-screen bg-gradient-to-br from-[#F8F6FF] to-white pt-4 md:pt-6 lg:pt-8 mt-[50px]">
       <div className="flex gap-6 w-full">
-        <div className="w-[20%] flex-shrink-0">
+        <div className="w-[20%] flex-shrink-0 -mt-[50px]">
           <ProfileSidebar />
         </div>
         <div className="w-[80%] flex-1 m-4">

@@ -68,9 +68,9 @@ const ProfileLayout: React.FC<ProfileLayoutProps> = ({
           <div className={`
             ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
             lg:translate-x-0 lg:relative lg:w-77  flex-shrink-0
-            fixed lg:static top-0 left-0 h-full lg:z-0 z-50
+            fixed lg:static top-10 left-0 h-full lg:z-0 z-50
             w-80 bg-white shadow-lg lg:shadow-none
-            transition-transform duration-300 ease-in-out
+            transition-transform duration-300 ease-in-out -mt-[20px]
           `}>
             <ProfileSidebar />
           </div>

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import ProfileLayout from '../../../components/shared/ProfileLayout';
 import {
   FiFileText,
   FiDownload,
@@ -122,10 +123,11 @@ export default function ResumeBuilder() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F8F6FF] to-white p-4 md:p-6 lg:p-8 mt-[50px]">
-      <div className="max-w-7xl mx-auto">
+    <ProfileLayout showSidebar={true} showStories={false} showJobSearchBar={false}>
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F6FF] to-[#F3EFFF] p-4 md:p-6 -mt-[10px]">
+        <div className="max-w-7xl mx-auto">
         {/* Enhanced Breadcrumb */}
-        <div className="mb-6 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+        {/* <div className="mb-6 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
           <nav
             className="flex items-center text-sm font-medium"
             aria-label="Breadcrumb"
@@ -170,11 +172,11 @@ export default function ResumeBuilder() {
               </li>
             </ol>
           </nav>
-        </div>
+        </div> */}
 
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold font-Montserrat text-[#5B5BE7] mb-2">
+          <h1 className="text-3xl md:text-2xl font-bold font-Montserrat text-[#5B5BE7]">
             Resume Builder
           </h1>
           <p className="text-lg text-[#666] font-Montserrat">
@@ -276,10 +278,12 @@ export default function ResumeBuilder() {
               <h2 className="text-2xl font-bold text-[#222] font-Montserrat">
                 My Resume Versions
               </h2>
-              <button className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#5B5BE7] to-[#B14BE4] hover:from-[#4A4AD6] hover:to-[#A13BD3] text-white font-bold rounded-xl transition-all duration-300">
-                <FiPlus size={18} />
-                Create New Resume
-              </button>
+              <Link href="/profile/resume/create">
+                <button className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#5B5BE7] to-[#B14BE4] hover:from-[#4A4AD6] hover:to-[#A13BD3] text-white font-bold rounded-xl transition-all duration-300">
+                  <FiPlus size={18} />
+                  Create New Resume
+                </button>
+              </Link>
             </div>
 
             <div className="grid gap-6">
@@ -328,16 +332,16 @@ export default function ResumeBuilder() {
                     </div>
                     <div className="flex flex-col gap-3">
                       <div className="flex gap-2">
-                        <button className="p-2 border border-[#E8E4FF] rounded-lg hover:border-[#B14BE4] transition-colors duration-300">
+                        <button className="p-2 text-[#5B5BE7] border border-[#5B5BE7] rounded-lg hover:border-[#B14BE4] transition-colors duration-300">
                           <FiEye size={16} />
                         </button>
-                        <button className="p-2 border border-[#E8E4FF] rounded-lg hover:border-[#B14BE4] transition-colors duration-300">
+                        <button className="p-2 text-[#5B5BE7] border border-[#5B5BE7] rounded-lg hover:border-[#B14BE4] transition-colors duration-300">
                           <FiEdit3 size={16} />
                         </button>
-                        <button className="p-2 border border-[#E8E4FF] rounded-lg hover:border-[#B14BE4] transition-colors duration-300">
+                        <button className="p-2 text-[#5B5BE7] border border-[#5B5BE7] rounded-lg hover:border-[#B14BE4] transition-colors duration-300">
                           <FiCopy size={16} />
                         </button>
-                        <button className="p-2 border border-[#E8E4FF] rounded-lg hover:border-red-400 transition-colors duration-300">
+                        <button className="p-2 text-[#5B5BE7] border border-[#5B5BE7] rounded-lg hover:border-red-400 transition-colors duration-300">
                           <FiTrash2 size={16} />
                         </button>
                       </div>
@@ -346,7 +350,7 @@ export default function ResumeBuilder() {
                           <FiDownload size={16} />
                           Download
                         </button>
-                        <button className="flex items-center gap-2 px-4 py-2 border border-[#E8E4FF] rounded-lg hover:border-[#B14BE4] transition-colors duration-300">
+                        <button className="flex items-center gap-2 px-4 py-2 text-[#5B5BE7] border border-[#5B5BE7] rounded-lg hover:border-[#B14BE4] transition-colors duration-300">
                           <FiShare2 size={16} />
                           Share
                         </button>
@@ -366,7 +370,7 @@ export default function ResumeBuilder() {
                 Resume Builder
               </h2>
               <div className="flex gap-3">
-                <button className="px-4 py-2 border border-[#E8E4FF] rounded-lg hover:border-[#B14BE4] transition-colors duration-300">
+                <button className="px-4 py-2 text-[#5B5BE7] border border-[#5B5BE7] rounded-lg hover:border-[#B14BE4] transition-colors duration-300">
                   Preview
                 </button>
                 <button className="px-6 py-2 bg-gradient-to-r from-[#5B5BE7] to-[#B14BE4] hover:from-[#4A4AD6] hover:to-[#A13BD3] text-white font-bold rounded-lg transition-all duration-300">
@@ -384,7 +388,7 @@ export default function ResumeBuilder() {
                 >
                   <div className="flex flex-col md:flex-row gap-4 justify-between items-start">
                     <div className="flex gap-4 flex-1">
-                      <div className="p-3 rounded-xl bg-gradient-to-br from-[#5B5BE7] to-[#B14BE4] text-white">
+                      <div className="p-3 rounded-xl bg-gradient-to-br from-[#5B5BE7] to-[#B14BE4] text-white h-[45px]">
                         {section.icon}
                       </div>
                       <div className="flex-1">
@@ -537,5 +541,6 @@ export default function ResumeBuilder() {
         )}
       </div>
     </div>
+    </ProfileLayout>
   );
 }
