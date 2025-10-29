@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   FiBriefcase,
@@ -21,6 +21,7 @@ import {
 } from "react-icons/fi";
 import { useAuth } from "@/context/AuthContext";
 import ProfileSidebar from "@/components/shared/ProfileSidebar";
+import { useSearchParams } from "next/navigation";
 
 
 const menuItems = [
@@ -115,14 +116,19 @@ const getMatchScoreColor = (score: number) => {
 
 export default function JobManagement() {
   const { user } = useAuth();
+  const searchParams = useSearchParams();
 
   // Dual-view mode: seeker vs employer
-  const [mode, setMode] = useState<"seeker" | "employer">("seeker");
+  const [mode, setMode] = useState<"seeker" | "employer">(
+    searchParams.get("mode") === "employer" ? "employer" : "seeker"
+  );
 
   // Seeker tabs (extended)
   const [activeTab, setActiveTab] = useState<
     "applications" | "recommendations" | "saved" | "meetings" | "browse"
-  >("applications");
+  >(
+    searchParams.get("tab") as "applications" | "recommendations" | "saved" | "meetings" | "browse" || "applications"
+  );
 
   // Location-based job discovery state
   const [locationFilter, setLocationFilter] = useState("");
@@ -530,6 +536,23 @@ export default function JobManagement() {
     setSeekerMeetingForm({ datetime: "", with: "", notes: "" });
   };
 
+  // Scroll to Schedule Meeting section when URL has specific parameters
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get("tab");
+    const modeParam = urlParams.get("mode");
+    
+    if (tab === "meetings" && modeParam === "employer") {
+      // Wait for the DOM to be fully rendered
+      setTimeout(() => {
+        const scheduleMeetingSection = document.getElementById("schedule-meeting");
+        if (scheduleMeetingSection) {
+          scheduleMeetingSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300); // Increased timeout to ensure DOM is ready
+    }
+  }, [activeTab, mode]);
+
   return (
     <div className="profile-page min-h-screen bg-gradient-to-br from-[#F8F6FF] to-white pt-4 md:pt-6 lg:pt-8 mt-[50px]">
       <div className="flex gap-6 w-full">
@@ -770,7 +793,7 @@ export default function JobManagement() {
             </div>
 
             {/* Employer: Schedule meetings */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#E8E4FF]">
+            <div id="schedule-meeting" className="bg-white rounded-2xl p-6 shadow-sm border border-[#E8E4FF]">
               <h2 className="text-2xl font-bold text-[#222] mb-4">
                 Schedule Meeting
               </h2>

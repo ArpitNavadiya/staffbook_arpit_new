@@ -37,7 +37,7 @@ const NetworkingRightSidebar: React.FC = () => {
   return (
     <>
       <div className="w-full lg:w-80 xl:w-96 bg-white rounded-lg border border-gray-200 p-4 lg:p-6 mb-[15px]">
-        <div className="p-2 lg:p-2">
+        <div>
           {/* Map Section */}
           <div className="w-full h-48 mb-4 rounded-lg overflow-hidden">
             <Image

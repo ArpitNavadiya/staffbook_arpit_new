@@ -3,7 +3,7 @@
 import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FiMessageSquare, FiX, FiMinus } from 'react-icons/fi';
+import { FiMessageSquare, FiX, FiMinus, FiMessageCircle } from 'react-icons/fi';
 import { mockChats } from '@/data/chats';
 
 export default function MessageWidget() {
@@ -14,17 +14,20 @@ export default function MessageWidget() {
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      {/* Toggle Button */}
-      {!open && (
-        <button
-          aria-label="Open messages"
-          className="flex items-center gap-2 px-4 py-2 rounded-full shadow-lg bg-gradient-to-r from-[#5B5BE7] to-[#B14BE4] text-white hover:from-[#4A4AD6] hover:to-[#A13BD3] transition-all"
-          onClick={() => setOpen(true)}
-        >
-          <FiMessageSquare />
-          Messages
-        </button>
-      )}
+      {/* Always visible buttons */}
+      <div className="flex gap-2 mb-2"> {/* Added mb-2 for spacing between buttons and widget */}
+        {/* Messages Toggle Button - Only when widget is closed */}
+        {!open && (
+          <button
+            aria-label="Open messages"
+            className="flex items-center gap-2 px-4 py-2 rounded-full shadow-lg bg-gradient-to-r from-[#5B5BE7] to-[#B14BE4] text-white hover:from-[#4A4AD6] hover:to-[#A13BD3] transition-all"
+            onClick={() => setOpen(true)}
+          >
+            <FiMessageSquare />
+            Messages
+          </button>
+        )}
+      </div>
 
       {/* Widget Panel */}
       {open && (

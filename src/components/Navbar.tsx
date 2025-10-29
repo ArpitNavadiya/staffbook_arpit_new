@@ -6,7 +6,7 @@ import { FiMenu, FiX, FiSearch } from "react-icons/fi";
 import { LOGGED_IN_LINKS, SITE_CONFIG } from "../constants/siteconfig";
 import GradientButton from "./shared/GradientButton";
 import { useAuth } from "../context/AuthContext";
-import { FiBell, FiMessageSquare } from "react-icons/fi";
+import { FiBell, FiMessageSquare, FiCalendar } from "react-icons/fi";
 import ProfileAvatar from "./shared/ProfileAvatar";
 import { usePathname, useRouter } from "next/navigation";
 import NotificationsModal from "./shared/NotificationsModal";
@@ -202,6 +202,15 @@ export const NavbarIconButton = ({
       >
         <FiBell size={22} className="text-gray-500" />
       </button>
+
+      {/* Calendar Button - Redirect to Schedule Meeting in Jobs page with EMPLOYER mode */}
+      <button
+        className="ml-1 p-2 rounded-full hover:bg-gray-100 transition-colors"
+        onClick={() => window.location.href = '/profile/jobs?tab=meetings&mode=employer'}
+      >
+        <FiCalendar size={22} className="text-gray-500" />
+      </button>
+
     </div>
   );
 };

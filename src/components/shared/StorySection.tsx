@@ -191,7 +191,7 @@ const StorySection = () => {
 
           <div
             ref={scrollContainerRef}
-            className="w-full h-[6.25rem] sm:h-[9.375rem] md:h-[12.5rem] mt-[2rem] sm:mt-[3rem] md:mt-[3.5rem] flex items-center overflow-x-auto px-[0.5rem] space-x-[1rem] sm:space-x-[1.5rem] scrollbar-thin scrollbar-thumb-[var(--color-primary)] "
+            className="w-full h-[6.25rem] sm:h-[9.375rem] md:h-[12.5rem] flex items-center overflow-x-auto px-[0.5rem] space-x-[1rem] sm:space-x-[1.5rem] scrollbar-thin scrollbar-thumb-[var(--color-primary)] "
             style={{
               WebkitOverflowScrolling: "touch",
               overflowX: "auto",

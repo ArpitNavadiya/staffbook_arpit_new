@@ -1,0 +1,19 @@
+import ChatbotWidget from '@/components/shared/ChatbotWidget';
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        {/* Your existing layout */}
+        {children}
+        
+        {/* Add this line to include the chatbot widget */}
+        <ChatbotWidget />
+      </body>
+    </html>
+  );
+}

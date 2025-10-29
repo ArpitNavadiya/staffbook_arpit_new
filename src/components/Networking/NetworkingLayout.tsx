@@ -1,31 +1,25 @@
 'use client'
 import React from 'react';
 import Networking from './Networking';
-import NetworkingSidebar from './NetworkingSidebar';
 import NetworkingRightSidebar from './NetworkingRightSidebar';
 import StorySection from '../shared/StorySection';
 
 const NetworkingLayout: React.FC = () => {
   return (
     <div className="min-h-screen w-full bg-gray-100">
-      <div className="max-w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-9">
-          {/* Left Sidebar */}
-          {/* <div className="lg:col-span-3">
-            <NetworkingSidebar />
-          </div> */}
-
-          <div className="lg:col-span-6">
-            
-            <div className='bg-white md:rounded-lg border border-gray-200 mb-4 ml-[17px] mr-[17px]'>
+      <div className="max-w-full pl-3 p-3">
+        <div className="grid grid-cols-1 lg:grid-cols-6 gap-4">
+          {/* Main Content Area */}
+          <div className="lg:col-span-4">
+            <div className='bg-white rounded-lg border border-gray-200'>
               <StorySection />
             </div>
-
+            
             <Networking />
           </div>
           
           {/* Right Sidebar */}
-          <div className="lg:col-span-2 hidden md:block">
+          <div className="lg:col-span-2">
             <NetworkingRightSidebar />
           </div>
         </div>
@@ -34,4 +28,4 @@ const NetworkingLayout: React.FC = () => {
   );
 };
 
-export default NetworkingLayout; 
+export default NetworkingLayout;

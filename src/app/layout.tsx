@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AuthProvider } from "@/context/AuthContext";
 import ClientLayout from "./ClientLayout";
+import MessageWidget from '@/components/shared/MessageWidget';
+import ChatbotWidget from '@/components/shared/ChatbotWidget';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,16 +25,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased  overflow-x-hidden`}
-      >
+      <body>
         <AuthProvider>
-          <ClientLayout>{children}</ClientLayout>
+          <Navbar />
+          {children}
+          <Footer />
+          <MessageWidget />
+          <ChatbotWidget />
         </AuthProvider>
       </body>
     </html>

@@ -52,7 +52,7 @@ const enhancedCards: EnhancedCardItem[] = [
 
 export default function ProfileSidebar() {
   return (
-    <aside className="w-full md:w-[20rem] lg:w-[19rem] md:h-screen flex flex-col items-center pt-[1.5rem] z-10 shadow-lg md:shadow-none mt-[3rem]">
+    <aside className="w-full md:w-[20rem] lg:w-[19rem] md:h-screen flex flex-col items-center pt-[1.5rem] z-10 shadow-lg md:shadow-none mt-[3.5rem]">
       {/* <div className="flex flex-col items-center mb-[1.5rem] flex-shrink-0 px-4 md:px-0">
         <div className="relative flex flex-col items-center">
           <div className="w-[6rem] h-[6rem] rounded-full bg-gradient-to-tr from-[#5B5BE7] via-[#B14BE4] to-[#921294] p-[0.1875rem] flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300">

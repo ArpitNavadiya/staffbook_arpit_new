@@ -359,14 +359,14 @@ const PostActionsModal: React.FC<{ isOpen: boolean; onClose: () => void; postId:
 
 const Networking: React.FC = () => {
   return (
-    <div className="w-full max-w-full mx-auto  px-0 md:px-4">
+    <div className="w-full max-w-full mx-auto  px-0">
       <div className="flex gap-6">
         {/* Main Content */}
         <div className="flex flex-col  w-full">
         
 
           {/* Create Post Section */}
-          <div className="bg-white md:rounded-lg border border-gray-200 p-6 mb-6">
+          <div className="bg-white md:rounded-lg border border-gray-200 mt-5 p-6 mb-6">
             <div className="flex items-center gap-4 mb-4">
               <div className="relative">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-pink-400 p-1">
