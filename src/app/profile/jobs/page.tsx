@@ -22,6 +22,7 @@ import {
 import { useAuth } from "@/context/AuthContext";
 import ProfileSidebar from "@/components/shared/ProfileSidebar";
 import { useSearchParams } from "next/navigation";
+import JobsContent from "./JobsContent";
 
 
 const menuItems = [
@@ -554,6 +555,7 @@ export default function JobManagement() {
   }, [activeTab, mode]);
 
   return (
+    <JobsContent>
     <div className="profile-page min-h-screen bg-gradient-to-br from-[#F8F6FF] to-white pt-4 md:pt-6 lg:pt-8 mt-[50px]">
       <div className="flex gap-6 w-full">
         <div className="w-[20%] flex-shrink-0 -mt-[50px]">
@@ -1549,5 +1551,6 @@ export default function JobManagement() {
         </div>
       </div>
     </div>
+  </JobsContent>
   );
 }
