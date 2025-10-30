@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react"; // add Suspense
 import Link from "next/link";
 import {
   FiBriefcase,
@@ -115,7 +115,7 @@ const getMatchScoreColor = (score: number) => {
   return "text-red-600 bg-red-100";
 };
 
-export default function JobManagement() {
+function JobManagementContent() {
   const { user } = useAuth();
   const searchParams = useSearchParams();
 
@@ -1552,5 +1552,14 @@ export default function JobManagement() {
       </div>
     </div>
   </JobsContent>
+  );
+}
+
+
+export default function JobManagement() {
+  return (
+    <Suspense fallback={<div />}>
+      <JobManagementContent />
+    </Suspense>
   );
 }
