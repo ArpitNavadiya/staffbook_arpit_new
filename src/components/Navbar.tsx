@@ -55,13 +55,16 @@ const Navbar = () => {
           </div>
           {/* Logo Section */}
           <div className="w-[180px] h-[70px] flex items-center">
-            <Image
-              src="/logo.png"
-              alt="Staff Book"
-              width={140}
-              height={50}
-              priority
-            />
+            <Link href="/" aria-label="Go to home">
+              <Image
+                src="/logo.png"
+                alt="Staff Book"
+                width={140}
+                height={50}
+                priority
+                className="cursor-pointer"
+              />
+            </Link>
           </div>
         </div>
         
@@ -69,12 +72,12 @@ const Navbar = () => {
         <div className="hidden lg:flex flex-1 max-w-md mx-8">
           <div className="relative w-full">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <FiSearch className="h-5 w-5 text-gray-400" />
+              <FiSearch className="h-5 w-5 text-gray-900" />
             </div>
             <input
               type="text"
               placeholder="People, Post & Jobs"
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-[10px] leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-[#5B5DE6] focus:border-[#5B5DE6] text-sm"
+              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-[10px] leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-[#5B5DE6] focus:border-[#5B5DE6] text-sm text-[#18192B]"
             />
           </div>
         </div>
@@ -135,12 +138,12 @@ const Navbar = () => {
           {/* Mobile Search Bar */}
           <div className="relative w-full mb-4">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <FiSearch className="h-5 w-5 text-gray-400" />
+              <FiSearch className="h-5 w-5 text-gray-900" />
             </div>
             <input
               type="text"
               placeholder="People, Post & Jobs"
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-full leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-[#5B5DE6] focus:border-[#5B5DE6] text-sm"
+              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-full leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-[#5B5DE6] focus:border-[#5B5DE6] text-sm text-[#18192B]"
             />
           </div>
           

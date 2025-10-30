@@ -60,9 +60,9 @@ const networkingMenu = [
   { id: 'events', label: 'Events', icon: <FiCalendar size={18} />, route: '/events' },
 ];
 
-export default function ProfileSidebar() {
+export default function ProfileSidebar({ compact = false }: { compact?: boolean }) {
   return (
-    <aside className="w-full md:w-[20rem] lg:w-[19rem] md:h-screen flex flex-col items-center pt-[1.5rem] z-10 shadow-lg md:shadow-none mt-[3.5rem]">
+    <aside className={`${compact ? "w-full h-auto md:h-auto md:sticky md:top-[70px] pt-[1rem] z-10 shadow-none mt-0" : "w-full md:w-[20rem] lg:w-[19rem] md:h-screen pt-[1.5rem] z-10 shadow-lg md:shadow-none mt-[3.5rem]"} flex flex-col items-center`}>
 
       {/* LinkedIn-style mini card + actions for Networking */}
       <div className="w-full px-4">
