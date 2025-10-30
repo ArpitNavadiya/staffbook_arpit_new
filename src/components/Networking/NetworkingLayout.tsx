@@ -14,7 +14,6 @@ const NetworkingLayout: React.FC = () => {
             <div className='bg-white rounded-lg border border-gray-200'>
               <StorySection />
             </div>
-            
             <Networking />
           </div>
           

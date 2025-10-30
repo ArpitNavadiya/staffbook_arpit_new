@@ -11,6 +11,8 @@ import {
   FiSearch,
   FiBell,
   FiEdit2,
+  FiBookmark,
+  FiCalendar
 } from "react-icons/fi";
 import { EnhancedCardItem } from "@/types/profileEnhanced";
 
@@ -50,42 +52,65 @@ const enhancedCards: EnhancedCardItem[] = [
   }
 ];
 
+// New: LinkedIn-style left menu items for Networking
+const networkingMenu = [
+  { id: 'saved', label: 'Saved items', icon: <FiBookmark size={18} />, route: '/saved' },
+  { id: 'groups', label: 'Groups', icon: <FiUsers size={18} />, route: '/groups' },
+  { id: 'newsletters', label: 'Newsletters', icon: <FiFileText size={18} />, route: '/newsletters' },
+  { id: 'events', label: 'Events', icon: <FiCalendar size={18} />, route: '/events' },
+];
+
 export default function ProfileSidebar() {
   return (
     <aside className="w-full md:w-[20rem] lg:w-[19rem] md:h-screen flex flex-col items-center pt-[1.5rem] z-10 shadow-lg md:shadow-none mt-[3.5rem]">
-      {/* <div className="flex flex-col items-center mb-[1.5rem] flex-shrink-0 px-4 md:px-0">
-        <div className="relative flex flex-col items-center">
-          <div className="w-[6rem] h-[6rem] rounded-full bg-gradient-to-tr from-[#5B5BE7] via-[#B14BE4] to-[#921294] p-[0.1875rem] flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="w-[5.5rem] h-[5.5rem] rounded-full bg-white flex items-center justify-center overflow-hidden">
+
+      {/* LinkedIn-style mini card + actions for Networking */}
+      <div className="w-full px-4">
+        {/* Connections card */}
+        <div className="bg-white rounded-[1rem] border border-[#E8E4FF] p-4 mb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-full overflow-hidden">
               <Image
                 src="/homePage/profile.png"
                 alt="Profile"
-                width={5.25 * 16}
-                height={5.25 * 16}
-                className="object-cover w-[5.25rem] h-[5.25rem] rounded-full hover:scale-105 transition-transform duration-300"
+                width={48}
+                height={48}
+                className="object-cover w-12 h-12"
               />
             </div>
+            <div className="flex-1">
+              <div className="text-[0.95rem] font-bold text-[#222]">Your profile</div>
+              <div className="text-[0.8rem] text-[#666]">Grow your network</div>
+            </div>
           </div>
-          <div className="absolute top-0 right-0 w-[2rem] h-[2rem] rounded-full bg-white flex items-center justify-center shadow-md hover:shadow-lg -translate-y-[0.5rem] translate-x-[0.5rem] cursor-pointer hover:scale-110 transition-all duration-300">
-            <FiEdit2 className="text-[#B14BE4] hover:text-[#921294] transition-colors duration-300" size={16} />
-          </div>
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-[-1.125rem] bg-gradient-to-r from-[#5B5BE7] to-[#B14BE4] px-3 py-1 rounded-full shadow-md text-sm font-bold text-white flex items-center">
-            80%
-          </div>
+
+          <Link
+            href="/myconnection"
+            className="mt-3 inline-flex items-center justify-center w-full h-9 rounded-lg bg-gradient-to-r from-[#5B5DE6] to-[#921294] text-white text-[0.85rem] font-bold hover:opacity-95 transition"
+          >
+            Connections
+          </Link>
         </div>
 
-        <div className="mt-[2rem] text-[1rem] font-bold font-Montserrat text-[#5B5BE7] text-center">
-          Riya Goyal
+        {/* Menu list */}
+        <div className="bg-white rounded-[1rem] border border-[#E8E4FF]">
+          <ul className="divide-y divide-[#F0EDFF]">
+            {networkingMenu.map(item => (
+              <li key={item.id}>
+                <Link
+                  href={item.route}
+                  className="flex items-center gap-3 px-4 py-3 hover:bg-[#F8F6FF] transition"
+                >
+                  <div className="text-[#5B5BE7]">{item.icon}</div>
+                  <span className="text-[0.9rem] font-medium text-[#222]">{item.label}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="text-[0.875rem] font-medium font-Montserrat text-[#222] text-center">
-          HR at Appsuccessor
-        </div>
-        <Link href="/profile" className="mt-[0.75rem] w-[7.4375rem] h-[1.8125rem] bg-gradient-to-r from-[#5B5DE6] to-[#921294] hover:from-[#4A4AD6] hover:to-[#811284] text-white text-[0.875rem] font-bold rounded-full shadow-md hover:shadow-lg flex items-center justify-center transition-all duration-300 transform hover:scale-105">
-          View Profile
-        </Link>
-      </div> */}
+      </div>
 
-      {/* Enhanced Cards Section - Scrollable */}
+      {/* Enhanced Cards Section - now moved below the new menu */}
       <div className="flex-1 w-full px-4 pb-16 md:pb-4">
         <div className="flex flex-col font-Montserrat gap-[0.75rem] w-full items-center">
           {enhancedCards.map((card) => (
